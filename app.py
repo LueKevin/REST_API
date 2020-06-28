@@ -1,8 +1,9 @@
+import flask_restful
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 
 app = Flask(__name__)
-api = Api(app)
+api = flask_restful.Api(app)
 
 users = [
     {
@@ -73,4 +74,4 @@ class User(Resource):
         return "{} is deleted.".format(name), 200
 
 api.add_resource(User, "/user/<string:name>")
-api.run(debug=True)
+app.run(debug=True)
